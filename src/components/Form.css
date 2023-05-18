@@ -1,0 +1,42 @@
+.container{
+    width: 100%;
+    max-width: 900px;
+}
+
+
+.logo img{
+  width: 10rem;
+  height: auto;
+}
+
+.card{
+  padding: 0 3rem;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .d-flex {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .me-2{
+    flex: auto;
+  }
+  .logo img{
+    width: 5rem;
+  }
+  .logo h1{
+    font-size: 1.5rem;
+  }
+  .card h2{
+    font-size: 1.2rem;
+  }
+  
+}
+
+
+
+/* https://script.google.com/macros/s/AKfycbyBA0aYpDJ4iGssKHXIDTiDvwGdG99kr36R5vvIehEidtSCxx2K5V22cGOCRFZHU07Kow/exec */
