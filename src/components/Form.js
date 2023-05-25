@@ -37,21 +37,21 @@ const Form = () => {
   
     for (let i = 0; i < 9; i++) {
       const formData = new FormData();
-      formData.append("date", getCurrentDate());
-      formData.append("time", getCurrentTime());
-      formData.append("giestyle", data.giestyle?.trim().toUpperCase());
-      formData.append("buyer", data.buyer?.trim().toUpperCase());
-      formData.append("color", data.color?.trim().toUpperCase());
-      formData.append("buyerStyle", data.buyerStyle?.trim().toUpperCase());
-      formData.append("line", data.line?.trim().toUpperCase());
-      formData.append("notes", data.notes?.trim().toUpperCase());
+      formData.append("Date", getCurrentDate());
+      formData.append("Time", getCurrentTime());
+      formData.append("GieStyle", data.GieStyle?.trim().toUpperCase());
+      formData.append("Buyer", data.Buyer?.trim().toUpperCase());
+      formData.append("Color", data.Color?.trim().toUpperCase());
+      formData.append("BuyerStyle", data.BuyerStyle?.trim().toUpperCase());
+      formData.append("Line", data.Line?.trim().toUpperCase());
+      formData.append("Notes", data.Notes?.trim().toUpperCase());
       
-      const size = data[`size${i}`]?.trim().toUpperCase();
-      const cutQty = data[`cutQty${i}`]?.trim().toUpperCase();
+      const Size = data[`Size${i}`]?.trim().toUpperCase();
+      const Cut = data[`Cut${i}`]?.trim().toUpperCase();
       
-      if (size && cutQty) {
-        formData.append(`size`, size);
-        formData.append(`cutQty`, cutQty);
+      if (Size && Cut) {
+        formData.append(`Size`, Size);
+        formData.append(`Cut`, Cut);
         formDataList.push(formData);
       }
     }
@@ -61,7 +61,7 @@ const Form = () => {
         const responses = await Promise.all(
           formDataList.map((formData) =>
             axios.post(
-              "https://script.google.com/macros/s/AKfycbyBA0aYpDJ4iGssKHXIDTiDvwGdG99kr36R5vvIehEidtSCxx2K5V22cGOCRFZHU07Kow/exec",
+              "https://script.google.com/macros/s/AKfycbxvxmhiYFAXpN8mFV7skDGcCJ7yQZHtsRWJ4ZQm_oAJECKNfAdXJA17MD9e-ILtIrpTxg/exec",
               formData
             )
           )
@@ -101,11 +101,11 @@ const Form = () => {
                 <input
                   type="date"
                   className="form-control"
-                  id="date"
-                  name="date"
+                  id="Date"
+                  name="Date"
                   value={getCurrentDate()}
                   readOnly
-                  {...register("date")}
+                  {...register("Date")}
                 />
               </div>
             </div>
@@ -115,59 +115,59 @@ const Form = () => {
                 <input
                   type="time"
                   className="form-control"
-                  id="time"
-                  name="time"
+                  id="Time"
+                  name="Time"
                   value={getCurrentTime()}
                   readOnly
-                  {...register("time")}
+                  {...register("Time")}
                 />
               </div>
             </div>
 
             <div className="col-md-6 col-sm-12">
               <div className="mb-3">
-                <label htmlFor="giestyle" className="mb-2">GIE Style</label>
+                <label htmlFor="GieStyle" className="mb-2">GIE Style</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="giestyle"
-                  name="giestyle"
-                  {...register("giestyle", {
+                  id="GieStyle"
+                  name="GieStyle"
+                  {...register("GieStyle", {
                     required: "GIE style is require.",
                   })}
                 />
-                {errors.giestyle && (
-                  <div className="text-danger">{errors.giestyle.message}</div>
+                {errors.GieStyle && (
+                  <div className="text-danger">{errors.GieStyle.message}</div>
                 )}
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="mb-3">
-                <label htmlFor="buyer" className="mb-2">Buyer</label>
+                <label htmlFor="Buyer" className="mb-2">Buyer</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="buyer"
-                  name="buyer"
-                  {...register("buyer", { required: "Buyer is require." })}
+                  id="Buyer"
+                  name="Buyer"
+                  {...register("Buyer", { required: "Buyer is require." })}
                 />
-                {errors.buyer && (
-                  <div className="text-danger">{errors.buyer.message}</div>
+                {errors.Buyer && (
+                  <div className="text-danger">{errors.Buyer.message}</div>
                 )}
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="mb-3">
-                <label htmlFor="color" className="mb-2">Color</label>
+                <label htmlFor="Color" className="mb-2">Color</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="color"
-                  name="color"
-                  {...register("color", { required: "Color is required." })}
+                  id="Color"
+                  name="Color"
+                  {...register("Color", { required: "Color is required." })}
                 />
-                {errors.color && (
-                  <div className="text-danger">{errors.color.message}</div>
+                {errors.Color && (
+                  <div className="text-danger">{errors.Color.message}</div>
                 )}
               </div>
             </div>
@@ -177,14 +177,14 @@ const Form = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="buyerStyle"
-                  name="buyerStyle"
-                  {...register("buyerStyle", {
+                  id="BuyerStyle"
+                  name="BuyerStyle"
+                  {...register("BuyerStyle", {
                     required: "Buyer Style is required.",
                   })}
                 />
-                {errors.buyerStyle && (
-                  <div className="text-danger">{errors.buyerStyle.message}</div>
+                {errors.BuyerStyle && (
+                  <div className="text-danger">{errors.BuyerStyle.message}</div>
                 )}
               </div>
             </div>
@@ -194,12 +194,12 @@ const Form = () => {
               <input
                 type="text"
                 className="form-control"
-                id="line"
-                name="line"
-                {...register("line", { required: "line is required." })}
+                id="Line"
+                name="Line"
+                {...register("Line", { required: "line is required." })}
               />
-              {errors.line && (
-                <div className="text-danger">{errors.line.message}</div>
+              {errors.Line && (
+                <div className="text-danger">{errors.Line.message}</div>
               )}
             </div>
 
@@ -211,9 +211,9 @@ const Form = () => {
                     <input
                       type="text"
                       className="form-control mr-2"
-                      id={`size${index}`}
-                      name={`size${index}`}
-                      {...register(`size${index}`)}
+                      id={`Size${index}`}
+                      name={`Size${index}`}
+                      {...register(`Size${index}`)}
                     />
                   </div>
                 ))}
@@ -228,9 +228,9 @@ const Form = () => {
                     <input
                       type="text"
                       className="form-control mr-2"
-                      id={`cutQty${index}`}
-                      name={`cutQty${index}`}
-                      {...register(`cutQty${index}`)}
+                      id={`Cut${index}`}
+                      name={`Cut${index}`}
+                      {...register(`Cut${index}`)}
                     />
                   </div>
                 ))}
@@ -238,16 +238,16 @@ const Form = () => {
             </div>
 
             <div className="mb-5">
-              <label htmlFor="notes" className="mb-2">Notes </label>
+              <label htmlFor="Notes" className="mb-2">Notes </label>
               <textarea
                 className="form-control"
-                id="notes"
+                id="Notes"
                 rows="3"
-                name="notes"
-                {...register("notes", { required: "Please enter some notes." })}
+                name="Notes"
+                {...register("Notes", { required: "Please enter some notes." })}
               />
-              {errors.notes && (
-                <div className="text-danger">{errors.notes.message}</div>
+              {errors.Notes && (
+                <div className="text-danger">{errors.Notes.message}</div>
               )}
             </div>
             <div className="col-md-12 col-sm-12">
